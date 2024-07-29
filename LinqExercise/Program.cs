@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Channels;
 
@@ -56,11 +57,8 @@ namespace LinqExercise
             //TODO: Change the value at index 4 to your age, then print the numbers in descending order
             Console.WriteLine("TODO: Change the value at index 4 to your age, then print the numbers in descending order");
             numbers.SetValue(31, 4);
-            var decendingOrder = numbers.OrderByDescending(x => x);
-            foreach (var i in decendingOrder)
-            {
-                Console.WriteLine(i);
-            }
+             numbers.OrderByDescending(x => x).ToList().ForEach(x=>Console.WriteLine(x));
+           
 
             // List of employees ****Do not remove this****
             var employees = CreateEmployees();
@@ -76,11 +74,22 @@ namespace LinqExercise
 
             //TODO: Print the Sum of the employees' YearsOfExperience if their YOE is less than or equal to 10 AND Age is greater than 35.
             Console.WriteLine("TODO: Print the Sum of the employees' YearsOfExperience if their YOE is less than or equal to 10 AND Age is greater than 35.");
+            var specialFiltered = employees.Where(x => x.YearsOfExperience <= 10 && x.Age > 35);
+            Console.WriteLine($"Total years of exp: {specialFiltered.Sum(x => x.YearsOfExperience)}");
             
 
             //TODO: Now print the Average of the employees' YearsOfExperience if their YOE is less than or equal to 10 AND Age is greater than 35.
+            Console.WriteLine($"Average years of exp: { specialFiltered.Average(x=> x.YearsOfExperience)}");
 
             //TODO: Add an employee to the end of the list without using employees.Add()
+
+            employees = employees.Append(new Employee("Alex", "Leifermann", 31, 3)).ToList();
+            foreach (var x in employees)
+                
+            {
+                Console.WriteLine(x.FullName);
+            }
+            
 
 
             Console.WriteLine();

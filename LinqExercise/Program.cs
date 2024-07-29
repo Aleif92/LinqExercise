@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Channels;
 
 namespace LinqExercise
 {
@@ -21,14 +22,28 @@ namespace LinqExercise
              */
 
             //TODO: Print the Sum of numbers
+            Console.WriteLine("TODO: Print the Sum of numbers");
+
+            Console.WriteLine(numbers.Sum());
 
             //TODO: Print the Average of numbers
+            Console.WriteLine("TODO: Print the Average of numbers");
+            Console.WriteLine(numbers.Average());
 
             //TODO: Order numbers in ascending order and print to the console
+            Console.WriteLine("TODO: Order numbers in ascending order and print to the console");
+            numbers.OrderBy(x => x).ToList().ForEach(x => Console.WriteLine(x));
+           
+            
+            
 
             //TODO: Order numbers in descending order and print to the console
+            Console.WriteLine("TODO: Order numbers in descending order and print to the console");
+            numbers.OrderByDescending(x => x).ToList().ForEach(x => Console.WriteLine(x));
 
             //TODO: Print to the console only the numbers greater than 6
+            Console.WriteLine("TODO: Print to the console only the numbers greater than 6");
+            numbers.Where(x => x > 6).ToList().ForEach(x => Console.WriteLine(x));
 
             //TODO: Order numbers in any order (ascending or desc) but only print 4 of them **foreach loop only!**
 
